@@ -1,0 +1,21 @@
+{
+  "name": "abu-context-engineering",
+  "displayName": "Abu Context Engineering",
+  "version": "0.4.1",
+  "description": "Research-first context engineering workflows for Claude Code and Codex.",
+  "author": {
+    "name": "Abu"
+  },
+  "homepage": "https://github.com/Blockchain-Oracle/abu-context-engineering",
+  "repository": "https://github.com/Blockchain-Oracle/abu-context-engineering",
+  "keywords": [
+    "claude-code",
+    "codex",
+    "skills",
+    "research",
+    "planning",
+    "verification",
+    "context-engineering"
+  ],
+  "skills": "./skills/"
+}

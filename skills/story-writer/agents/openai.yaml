@@ -1,0 +1,7 @@
+interface:
+  display_name: "Story Writer"
+  short_description: "Create testable stories from specs."
+  brand_color: "#EA580C"
+  default_prompt: "Use $story-writer to derive stories from this spec."
+policy:
+  allow_implicit_invocation: true

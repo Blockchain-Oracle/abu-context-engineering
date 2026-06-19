@@ -1,0 +1,7 @@
+interface:
+  display_name: "Spec Writer"
+  short_description: "Turn research into clear build specs."
+  brand_color: "#DC2626"
+  default_prompt: "Use $spec-writer to turn this researched idea into a spec."
+policy:
+  allow_implicit_invocation: true

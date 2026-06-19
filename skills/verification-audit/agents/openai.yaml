@@ -1,0 +1,7 @@
+interface:
+  display_name: "Verification Audit"
+  short_description: "Prove implementation matches the plan."
+  brand_color: "#16A34A"
+  default_prompt: "Use $verification-audit to verify this implementation against the spec."
+policy:
+  allow_implicit_invocation: true

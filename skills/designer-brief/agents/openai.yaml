@@ -1,0 +1,7 @@
+interface:
+  display_name: "Designer Brief"
+  short_description: "Brief AI designers for mocked prototypes."
+  brand_color: "#DB2777"
+  default_prompt: "Use $designer-brief to package this project context for an AI designer."
+policy:
+  allow_implicit_invocation: true

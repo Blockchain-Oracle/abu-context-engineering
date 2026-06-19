@@ -1,0 +1,7 @@
+interface:
+  display_name: "Prototype Discovery"
+  short_description: "Extract requirements from prototypes."
+  brand_color: "#0F766E"
+  default_prompt: "Use $prototype-discovery to audit this prototype before implementation."
+policy:
+  allow_implicit_invocation: true

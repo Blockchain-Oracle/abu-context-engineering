@@ -1,0 +1,7 @@
+interface:
+  display_name: "Domain Wiki"
+  short_description: "Maintain a source-backed compounding wiki."
+  brand_color: "#7C3AED"
+  default_prompt: "Use $domain-wiki to ingest these sources into my project wiki."
+policy:
+  allow_implicit_invocation: true

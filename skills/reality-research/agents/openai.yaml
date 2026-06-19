@@ -1,0 +1,7 @@
+interface:
+  display_name: "Reality Research"
+  short_description: "Facts-only research before specs or plans."
+  brand_color: "#2563EB"
+  default_prompt: "Use $reality-research to document current reality before we plan."
+policy:
+  allow_implicit_invocation: true

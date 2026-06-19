@@ -1,0 +1,7 @@
+interface:
+  display_name: "Handoff Compaction"
+  short_description: "Write compact resume-ready handoffs."
+  brand_color: "#9333EA"
+  default_prompt: "Use $handoff-compaction to write a concise handoff for this session."
+policy:
+  allow_implicit_invocation: true

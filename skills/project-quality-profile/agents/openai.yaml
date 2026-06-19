@@ -1,0 +1,7 @@
+interface:
+  display_name: "Project Quality Profile"
+  short_description: "Stack-aware CI, hooks, and guardrails."
+  brand_color: "#059669"
+  default_prompt: "Use $project-quality-profile to decide this repo's quality gates."
+policy:
+  allow_implicit_invocation: true
