@@ -17,6 +17,20 @@ When a product surface map exists, it is the source of truth for the screen inve
 
 Only derive screens and states inline when no surface map exists, and say so — then recommend `product-surface-map` first for anything beyond a trivial surface.
 
+## Interview The Designer First (when the designer is known)
+
+When a specific designer/design agent will receive the brief, interview them BEFORE writing it — their answers shape the brief's structure and become the handback contract. Ask, from their point of view:
+
+1. What input package do they need, in what format, and what do builders always forget to include?
+2. Wireframes vs direction vs straight-to-hi-fi — their sequence, and where they want sign-off checkpoints.
+3. Mobile vs desktop priority for this product's real audience.
+4. Do they create the brand identity or receive it (plus the user's veto constraints).
+5. The handback format they can realistically commit to (file structure, styling approach, how states are delivered, fonts/assets) — this becomes the contract both sides build against.
+6. Their tools, and whether the toolchain changes what inputs they need.
+7. The #1 thing builders do that ruins a handoff for them — then don't do it.
+
+Give them just enough product context to answer meaningfully; the full brief comes after. Fold durable lessons from their answers back into this skill; fold project-specific terms into the brief only.
+
 ## Prototype Boundary
 
 This brief is for high-fidelity design exploration and clickable/static prototype work. The prototype should feel production-quality in UX, information architecture, interaction detail, and visual polish, while using mocked data and mocked integrations by default.
