@@ -4,15 +4,15 @@
     "name": "Abu"
   },
   "metadata": {
-    "description": "Claude Code and Codex context engineering workflows by Abu.",
-    "version": "0.4.1"
+    "description": "Claude Code and Codex context engineering workflows by Abu, including prototype reintegration and goal prompts before implementation planning.",
+    "version": "0.5.0"
   },
   "plugins": [
     {
       "name": "abu-context-engineering",
       "source": "./",
-      "description": "Research-first workflows for repo-local context, specs, plans, verification, handoffs, and instruction files.",
-      "version": "0.4.1",
+      "description": "Research-first workflows for repo-local context, specs, prototype discovery, prototype reintegration, goal prompts, plans, verification, handoffs, and instruction files.",
+      "version": "0.5.0",
       "author": {
         "name": "Abu"
       },

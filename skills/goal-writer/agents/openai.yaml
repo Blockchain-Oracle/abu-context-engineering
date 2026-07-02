@@ -1,0 +1,7 @@
+interface:
+  display_name: "Goal Writer"
+  short_description: "Write Context Engineering goal prompts."
+  brand_color: "#7C3AED"
+  default_prompt: "Use $goal-writer to write the next Context Engineering goal prompt."
+policy:
+  allow_implicit_invocation: true

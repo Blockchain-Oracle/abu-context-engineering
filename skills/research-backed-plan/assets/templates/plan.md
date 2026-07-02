@@ -6,11 +6,17 @@
 
 ## Open Questions
 
+## Prototype Reintegration Gate
+
 ## Phase 1: <name>
 
 ### Goal
 
 ### Work
+
+### Real Integration Path
+
+### Mock/Simulation Policy
 
 ### Checks
 

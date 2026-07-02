@@ -11,6 +11,8 @@ Use this skill after a designer/prototype agent has produced a high-fidelity moc
 
 The prototype is evidence, not the source of truth. Explore it deeply, extract what it reveals, then write a discovery report with proposed spec/story/quality/profile/plan deltas. Do not silently rewrite specs or start implementation unless the user explicitly asks.
 
+If the prototype was produced after prior research/spec/story/design work, prototype discovery is not the last pre-plan step. It must feed a prototype reintegration pass that maps the mocked UI back to real integrations, constraints, and non-shipping blockers.
+
 ## Stack Translation Rule
 
 Prototype exports may be static HTML, CSS, JSX, screenshots, or generated design-system files. Treat those as design evidence. Before implementation, translate findings into the actual target stack from `project-quality-profile`.
@@ -23,12 +25,26 @@ Examples:
 
 Do not tell the implementation agent to copy prototype HTML/CSS into a React codebase unless that is the chosen architecture.
 
+## Mock Boundary Rule
+
+The high-fidelity prototype may use mocked data, mocked auth, mocked wallets, mocked API responses, mocked payments, or simulated backend behavior. These mocks are prototype evidence only.
+
+Do not treat prototype mocks as implementation defaults. Every mocked surface that appears required for the product must be handed to `prototype-reintegration` to decide one of:
+
+- real integration path for MVP,
+- real integration path after MVP with a visible non-shipping limitation,
+- explicit out-of-scope/non-goal,
+- blocker requiring more research or user decision.
+
+If Abu says the product should not ship mocks, call that out and require reintegration before implementation planning.
+
 ## Inputs To Gather
 
 Prefer these inputs:
 
 - Prototype folder, static HTML files, screenshots, design export, or hosted preview.
 - Designer brief.
+- Product surface map when it exists (the checklist of expected screens, states, and data shapes).
 - Spec and stories.
 - Project quality profile.
 - Existing repo architecture if the project already exists.
@@ -60,8 +76,10 @@ Inspect the prototype end to end and identify:
 4. Extract implied product requirements.
 5. Extract implied technical requirements.
 6. Translate implementation implications into the target project stack.
-7. Compare against spec, stories, designer brief, and quality profile when available.
-8. Write proposed deltas instead of editing source artifacts automatically.
+7. Compare against spec, stories, designer brief, product surface map, and quality profile when available — for the surface map, check every listed screen, state, and data shape and flag anything the prototype dropped, changed, or invented.
+8. Identify every prototype mock or simulation that would need real integration before shipping.
+9. Write proposed deltas instead of editing source artifacts automatically.
+10. Recommend `prototype-reintegration` before planning whenever the prototype represents flows that depend on real APIs, wallets, payments, auth, storage, MCP servers, agents, or external infrastructure.
 
 ## Output
 
@@ -89,6 +107,10 @@ Use this structure:
 ## State And Edge Cases
 
 ## Target-stack Translation
+
+## Mocked Prototype Surfaces
+
+## Required Prototype Reintegration
 
 ## Spec Deltas
 

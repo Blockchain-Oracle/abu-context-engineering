@@ -2,7 +2,7 @@
 
 Research-first context engineering workflows for Codex and Claude Code.
 
-This plugin packages reusable skills for repo-local `.thoughts` context, reality research, project quality profiling, source-backed domain wiki maintenance, specs, stories, designer briefs, prototype discovery, research-backed plans, verification audits, handoff compaction, and instruction-file authoring.
+This plugin packages reusable skills for repo-local `.thoughts` context, reality research, project quality profiling, source-backed domain wiki maintenance, specs, stories, designer briefs, prototype discovery, prototype reintegration, goal prompts, research-backed plans, verification audits, handoff compaction, and instruction-file authoring.
 
 ## Claude Code
 
@@ -26,6 +26,12 @@ Use skills with the plugin namespace:
 /abu-context-engineering:reality-research
 /abu-context-engineering:project-quality-profile
 /abu-context-engineering:spec-writer
+/abu-context-engineering:story-writer
+/abu-context-engineering:product-surface-map
+/abu-context-engineering:designer-brief
+/abu-context-engineering:prototype-discovery
+/abu-context-engineering:prototype-reintegration
+/abu-context-engineering:goal-writer
 /abu-context-engineering:research-backed-plan
 /abu-context-engineering:verification-audit
 /abu-context-engineering:handoff-compaction
@@ -50,8 +56,11 @@ The Codex manifest remains at `.codex-plugin/plugin.json`. The personal Codex ma
 - `domain-wiki`
 - `spec-writer`
 - `story-writer`
+- `product-surface-map`
 - `designer-brief`
 - `prototype-discovery`
+- `prototype-reintegration`
+- `goal-writer`
 - `research-backed-plan`
 - `verification-audit`
 - `handoff-compaction`
