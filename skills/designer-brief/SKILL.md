@@ -114,7 +114,7 @@ Do not include:
 
 ## Output
 
-Use this structure:
+Use this structure by default. When the designer has been interviewed and asked for a different structure, their requested structure wins — the headings below then become a coverage checklist (every element must still be present or consciously dropped with a stated reason), not mandatory sections.
 
 ```markdown
 # Designer Brief: <project or feature>
