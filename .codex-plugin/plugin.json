@@ -1,6 +1,6 @@
 {
   "name": "abu-context-engineering",
-  "version": "0.5.0+codex.20260619094332",
+  "version": "0.5.1+codex.20260619094332",
   "description": "Codex-native context engineering workflows for research, domain wiki maintenance, quality profiling, specs, design briefs, prototype discovery, prototype reintegration, goal prompts, plans, verification, handoffs, and AGENTS.md authoring.",
   "author": {
     "name": "Abu"

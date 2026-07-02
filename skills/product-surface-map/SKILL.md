@@ -32,11 +32,12 @@ If stories are missing, recommend `story-writer` first.
 1. Derive the screen inventory from stories: every screen, panel, and overlay a user can reach, grouped by role/actor.
 2. Draw the navigation flow: entry points, the paths between screens, and the shortest path to the core action.
 3. For EVERY screen, enumerate required states: loading, empty, error, success, disabled — plus product-specific states the designer could never invent (e.g. a deliberately-empty privacy view, an atomic-failure explanation, a claim-vs-auto variant).
-4. Define on-screen data shapes: the exact fields each screen, row, card, and generated document displays (anchor to researched real-product anatomy when available).
-5. Note copy tone and vocabulary rules (jargon bans, domain terms to use or avoid).
-6. Mark open surface questions that are genuinely the designer's to answer (layout, visual treatment) versus decisions already made.
-7. Keep each item traceable to a story or requirement ID where possible.
-8. Stop before visual direction, wireframes, or implementation — the surface map feeds the designer brief; it does not replace it.
+4. TIER the states when the project has a demo/judging context: mark the 2-3 DEMO-CRITICAL moments that prove the product's core claim separately from the completeness inventory. Designers design to the demo-critical tier; the full inventory is the builder's audit checklist — do not dump it on the designer undifferentiated.
+5. Define on-screen data shapes: the exact fields each screen, row, card, and generated document displays (anchor to researched real-product anatomy when available) — AND give real-ish sample values for each (names, amounts, identifiers truncated exactly the way the platform truncates them). Fake data invented later by a designer always reads fake; sample data is the builder's job.
+6. Note copy tone and vocabulary rules (jargon bans, domain terms to use or avoid).
+7. Mark open surface questions that are genuinely the designer's to answer (layout, visual treatment) versus decisions already made.
+8. Keep each item traceable to a story or requirement ID where possible.
+9. Stop before visual direction, wireframes, or implementation — the surface map feeds the designer brief; it does not replace it.
 
 ## Output
 
@@ -49,9 +50,9 @@ Use this structure:
 
 ## Screen Inventory (by role)
 
-## Per-screen Required States
+## Per-screen Required States (demo-critical tier + full inventory)
 
-## On-screen Data Shapes
+## On-screen Data Shapes And Sample Data
 
 ## Generated Artifacts (documents, exports, receipts)
 

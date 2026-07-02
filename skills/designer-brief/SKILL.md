@@ -58,12 +58,13 @@ Prefer these inputs:
 - GitHub links, README files, screenshots, demos, or docs the designer should inspect.
 - Known constraints and non-goals.
 - Prototype target: landing page, dashboard, app flow, mobile, desktop, or responsive prototype.
+- The designer's own stated working preferences and handback format when they have been interviewed — the brief should confirm that contract back to them verbatim so both sides build against the same terms.
 
 ## What To Include
 
 Include:
 
-- Product summary and why it exists.
+- Product summary and why it exists — and when the project is demo-judged, LEAD with the demo script: what the audience must feel at each beat. The demo script drives design decisions more than the screen list does.
 - Target users and their intent.
 - Domain concepts the designer must understand.
 - End-to-end journey and step-by-step flow.
@@ -72,7 +73,7 @@ Include:
 - Interaction ideas the designer may use, such as modals, drawers, tabs, carousels, timelines, animations, command menus, search, filters, or onboarding.
 - Mock data expectations.
 - Integration boundaries the prototype should represent, even when mocked.
-- Inspiration sources and what each source is meant to communicate.
+- Inspiration sources and what each source is meant to communicate — plus at least one ANTI-reference: a named product/style the design must NOT resemble.
 - Anti-slop quality bar and product-specific design risks.
 - Explicit creative freedom for visual direction.
 - Things not to design or implement.
