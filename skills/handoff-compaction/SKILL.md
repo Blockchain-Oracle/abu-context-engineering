@@ -16,7 +16,7 @@ A handoff is a resume artifact, not a transcript. Keep it compact, factual, and 
 Prefer these inputs:
 
 - Current objective.
-- Relevant research, spec, stories, designer brief, plan, and verification files.
+- Relevant research, spec, stories, design document, plan, and verification files.
 - Files changed or created.
 - Commands run and their results.
 - Decisions made.

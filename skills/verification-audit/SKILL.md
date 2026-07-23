@@ -1,6 +1,6 @@
 ---
 name: verification-audit
-description: Use when Abu wants proof that implementation matches the accepted spec, stories, plan, designer brief, and project quality profile before calling work done or opening/merging a PR. Produces a traceability audit with evidence, commands, missing coverage, deviations, and a pass/fail verdict. This is distinct from code review.
+description: Use when Abu wants proof that implementation matches the accepted spec, stories, plan, design document, and project quality profile before calling work done or opening/merging a PR. Produces a traceability audit with evidence, commands, missing coverage, deviations, and a pass/fail verdict. This is distinct from code review.
 ---
 
 # Verification Audit
