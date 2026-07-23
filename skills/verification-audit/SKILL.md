@@ -17,7 +17,7 @@ Prefer these inputs:
 
 - Spec.
 - Stories and acceptance criteria.
-- Designer brief when UI/prototype work is in scope.
+- Design document when UI work is in scope.
 - Research-backed plan.
 - Project quality profile.
 - Changed files or diff.

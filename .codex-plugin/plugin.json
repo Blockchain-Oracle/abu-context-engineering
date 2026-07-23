@@ -1,7 +1,7 @@
 {
   "name": "abu-context-engineering",
   "version": "0.5.3+codex.20260619094332",
-  "description": "Codex-native context engineering workflows for research, domain wiki maintenance, quality profiling, specs, design briefs, prototype discovery, prototype reintegration, goal prompts, plans, verification, handoffs, and AGENTS.md authoring.",
+  "description": "Codex-native context engineering workflows for research, domain wiki maintenance, quality profiling, specs, surface maps, design documents, screen batch audits, goal prompts, integration-reality plans, verification, handoffs, and AGENTS.md authoring.",
   "author": {
     "name": "Abu"
   },
@@ -20,7 +20,7 @@
   "interface": {
     "displayName": "Abu Context Engineering",
     "shortDescription": "Research-first Codex workflows for building projects.",
-    "longDescription": "Abu Context Engineering adds reusable Codex skills for repo-local .thoughts context, reality research, project quality profiling, source-backed domain wiki maintenance, specs, stories, designer briefs, prototype discovery, prototype reintegration, goal prompts, research-backed plans, verification audits, handoff compaction, and concise AGENTS.md authoring.",
+    "longDescription": "Abu Context Engineering adds reusable Codex skills for repo-local .thoughts context, reality research, project quality profiling, source-backed domain wiki maintenance, specs, stories, product surface maps, design documents, screen batch audits, goal prompts, research-backed plans with integration-reality matrices, verification audits, handoff compaction, and concise AGENTS.md authoring.",
     "developerName": "Abu",
     "category": "Productivity",
     "capabilities": [
