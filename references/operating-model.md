@@ -15,14 +15,10 @@ idea
 -> spec
 -> stories
 -> product surface map
--> designer brief (direction-lock commission)
--> in-repo prototype: direction lock
--> in-repo prototype: coverage build (batch-audited)
--> prototype reintegration
--> spec/story/quality deltas accepted
+-> design document (tokens + laws; one living sample screen only when taste needs deciding)
 -> goal prompt refreshed when useful
--> plan
--> implementation loop
+-> plan (Plan Mode with research enabled; includes the integration reality matrix)
+-> implementation loop (screens land in batches, audited against map + design doc; spec/story deltas accepted as they arise)
 -> verification audit
 -> PR/code review
 -> handoff and wiki update
@@ -50,19 +46,15 @@ Goal prompts are execution controls. They tell an agent what objective Abu is se
 
 Specs define what should be built, why it matters, and what done means.
 
-Stories describe user-facing slices or BDD-style acceptance paths derived from a spec. Stories can exist before a prototype to guide the designer, but they are not final once a high-fidelity prototype returns. Prototype discovery and prototype reintegration may produce story deltas that must be accepted before planning.
+Stories describe user-facing slices or BDD-style acceptance paths derived from a spec. Stories are not frozen: planning and the implementation loop's screen batch audits may propose story deltas as the product gets built and seen, and those deltas must be accepted at a checkpoint rather than applied silently.
 
-Product surface maps make the concrete product surface explicit before a designer brief: full screen inventory, navigation flow, per-screen required states (loading, empty, error, success, and product-specific states), on-screen data shapes, and generated artifacts. They exist because briefs written from stories alone delegate dozens of micro-decisions to the designer's imagination. They stay on the product surface — no database schema, API design, or code architecture.
+Product surface maps make the concrete product surface explicit before a design document: full screen inventory, navigation flow, per-screen required states (loading, empty, error, success, and product-specific states), on-screen data shapes, and generated artifacts. They exist because design direction written from stories alone delegates dozens of micro-decisions to imagination. They stay on the product surface — no database schema, API design, or code architecture.
 
-In-repo prototypes obey the context-custody rule (locked with Abu 2026-07-23, from the x402arc gap postmortem). The prototype is built inside the project repo by the agent that holds the full corpus — never, by default, in an external design environment. Every handoff to a context-poor environment compresses the corpus into a projection, and the loss surfaces as dropped screens, thinned differentiators, and taste misses that the pipeline then pays to reconcile after the fact. The gap is structural, not bad luck: the external round-trip is the only stage that surrenders context custody, moves verification from continuous to post-hoc, and forces one artifact to serve two fighting mandates (coverage fidelity vs taste discovery). The prototype therefore splits into two sub-steps: first the **direction lock** — a few fully-alive screens auditioning a visual language on the product's demo-critical spine, iterated with the user in fast rounds until a direction is accepted; then the **coverage build** — the full mapped surface built in batches of 3-4 screens, each batch audited against the product surface map before the next batch starts. Batch audits append to one running `design/coverage-audit.md`, so the consolidated "what the prototype taught us" record still exists.
+Design documents replace the prototype stage entirely (locked with Abu 2026-07-23, second design postmortem on x402arc; verified against 2026 practice — spec-driven agent workflows plan from documents and iterate design in the real codebase, because "prototypes stop being mere mockups; they become previews of production"). Design is aesthetics and aesthetics keep changing; what the pipeline needs before planning is a contract, not screens. The design document is that contract: the product's LAWS (fixed vocabulary, honesty rules, jargon bans), the visual language as TOKENS (palette per theme, type roles, spacing, motion rules, signature elements and their semantics), per-surface direction (default sentence → hard constraints → the trap), the accessibility bar, and named anti-references. It is written in-repo by the context-holding agent from the whole corpus, consuming the product surface map as the source of truth for screens, states, and data shapes. **Taste protocol:** when the visual language is genuinely undecided, build at most ONE living sample screen on the product's demo-critical spine and iterate it with the user in fast rounds; once accepted, extract its tokens into the design document and archive the sample as direction evidence. The sample is a taste instrument, never a coverage artifact — coverage happens in the implementation loop, on production screens. The context-custody rule stands: no external, context-poor design environment by default; commissioning a human designer is an optional mode, and then the design document is their brief and their work returns in audited batches, never one full-surface drop.
 
-Designer briefs package project context for whoever builds the direction lock — by default the context-holding agent itself, or, in the optional external mode, a human designer or dedicated design tool commissioned under a batch-gated contract (screens return in audited batches of 3-4, never as one full-surface drop). The brief explains the product, users, flows, screens, states, domain details, inspirations, and prototype scope. When a product surface map exists, the brief consumes it as the source of truth for screens, states, and data shapes instead of re-deriving them. It should ask for high-fidelity mocked screens: production-quality UX and visuals with mocked data and mocked integrations. It should not prescribe colors, fonts, or exact visual style unless brand rules or user instructions require it.
+Screen batch audits keep design verification continuous during implementation. Screens land in batches of 3-4 real, production screens; each batch is audited against the product surface map and the design document (required states, canonical data verbatim, copy laws, token fidelity, accessibility) before the next batch starts, and findings append to one running `design/coverage-audit.md` as proposed deltas — specs and stories are updated after review, never silently. This is the same continuous-gate discipline every text stage already uses, applied to the built product instead of a throwaway artifact.
 
-Prototype discovery is the per-batch audit protocol of the coverage build (and the whole-artifact audit when the optional external mode is used). Per batch it checks every mapped state and data shape, flags drops, changes, and DISCOVERED additions, and extracts newly revealed requirements, hidden data needs, routes, auth rules, API contracts, schema candidates, and implementation implications. Findings append to the running coverage-audit log as proposed deltas; specs, stories, and plans are updated after review instead of letting the prototype silently replace the source of truth.
-
-Prototype reintegration maps the designer's mocked prototype back onto current research, real tools, real APIs, real auth/payment/wallet/storage paths, and known technical constraints. Prototype mocks are allowed only in the design artifact. Before planning implementation, every mocked prototype surface must be classified as real integration, non-shipping blocker, or explicitly out of MVP scope. Do not let "mocked in the prototype" become "mocked in the product" by default.
-
-Plans define how to implement approved specs, stories, accepted prototype-discovery deltas, and accepted prototype-reintegration decisions when a prototype exists.
+Plans define how to implement approved specs, stories, the accepted design document, and the plan's own integration reality matrix: before tasks are cut, every integration-bearing product surface (APIs, wallets, payments, auth, storage, MCP servers, agents, external services) is classified as real-for-MVP, real-later with a visible non-shipping limitation, simulated-demo-only with explicit labeling, out of scope, or blocked pending research or a user decision. No mock ships silently; a blocked judged-path surface blocks the plan. Plans are drafted with research enabled — the planning agent re-reads the corpus and goes back online whenever reality needs re-verifying — and in Plan Mode when the harness provides it.
 
 Verification audits prove traceability from spec to stories to plan to code to tests. They are not the same as PR review.
 
@@ -91,7 +83,7 @@ Use this layout unless the user or project gives a better one:
   handoffs/
 ```
 
-Raw sources are immutable. Wiki files are maintained by the agent. Specs, stories, design briefs, coverage-audit logs, plans, verification, and handoffs are project artifacts. The in-repo prototype and its running `coverage-audit.md` live under `design/`; the `prototype-discovery/` directory is used only by the optional external mode (whole-artifact audits of commissioned prototypes) and by legacy projects.
+Raw sources are immutable. Wiki files are maintained by the agent. Specs, stories, design documents, coverage-audit logs, plans, verification, and handoffs are project artifacts. The design document, direction evidence (archived sample screens), and the running `coverage-audit.md` live under `design/`; the `prototype-discovery/` and `prototype-reintegration/` directories exist only in legacy projects and in the optional external-designer mode.
 
 ## First Plugin Scope
 
@@ -103,9 +95,8 @@ The first usable version implements:
 - `spec-writer`
 - `story-writer`
 - `product-surface-map`
-- `designer-brief`
-- `prototype-discovery`
-- `prototype-reintegration`
+- `design-document` (absorbed `designer-brief`)
+- `screen-batch-audit` (absorbed `prototype-discovery`; `prototype-reintegration` folded into `research-backed-plan`)
 - `goal-writer`
 - `research-backed-plan`
 - `agents-md-author`
@@ -142,12 +133,8 @@ Use explicit checkpoints:
 2. Quality profile accepted.
 3. Spec accepted.
 4. Stories accepted.
-5. Product surface map accepted when UI/prototype work is in scope.
-6. Designer brief accepted when UI/prototype work is in scope.
-7. Direction lock accepted (visual language chosen from in-repo exploration).
-8. Coverage build complete — every batch audit green against the surface map.
-9. Prototype reintegration accepted when a prototype exists.
-10. Spec/story/quality deltas accepted when batch audits or reintegration find gaps.
-11. Plan accepted.
-12. Implementation verified.
-13. Handoff written.
+5. Product surface map accepted when UI work is in scope.
+6. Design document accepted when UI work is in scope (its sample screen iterated to acceptance first, when taste needed deciding).
+7. Plan accepted — integration reality matrix included; no silent mocks on judged paths.
+8. Implementation verified — screen batch audits green; spec/story deltas accepted as they arose.
+9. Handoff written.
