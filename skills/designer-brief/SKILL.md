@@ -1,11 +1,17 @@
 ---
 name: designer-brief
-description: Use whenever Abu wants a designer brief, design handoff, prototype commission, or "brief for Claude design" — any moment a design/prototype phase starts after research, spec, stories, or a product surface map exist. Also use when Abu criticizes an existing brief as shallow, rigid, demo-framed, or taste-dictating. Produces a product-first designer-brief.md woven from ALL project artifacts with visible source threads, structured in three registers (LAWS = product identity, CONTEXT = deep understanding, DIRECTION = overrulable suggestions), with a discovery protocol ("the floor, not a cage" — designers mark unlisted screens DISCOVERED), zero visual-taste dictation, zero demo framing, and mocked-only integrations inside the prototype unless explicitly in scope.
+description: Use whenever Abu wants a designer brief, design handoff, prototype commission, direction-lock commission, or "brief for Claude design" — any moment a design/prototype phase starts after research, spec, stories, or a product surface map exist. Also use when Abu criticizes an existing brief as shallow, rigid, demo-framed, or taste-dictating. Produces a product-first designer-brief.md woven from ALL project artifacts with visible source threads, structured in three registers (LAWS = product identity, CONTEXT = deep understanding, DIRECTION = overrulable suggestions), with a discovery protocol ("the floor, not a cage" — designers mark unlisted screens DISCOVERED), zero visual-taste dictation, zero demo framing, and mocked-only integrations inside the prototype unless explicitly in scope. Default recipient is the context-holding agent building the prototype in-repo (direction lock, then batch-audited coverage build); an external designer is an optional mode under a batch-gated contract.
 ---
 
 # Designer Brief
 
-Use this skill when preparing an external AI designer or prototype agent to design a product UI from existing project context.
+Use this skill when preparing whoever builds the prototype to design a product UI from existing project context.
+
+## Context Custody (who receives the brief)
+
+By default the brief's recipient is the context-holding agent itself, building **in-repo**: first a **direction lock** (a few fully-alive screens auditioning a visual language on the product's demo-critical spine, iterated with the user until accepted), then a **coverage build** in batches of 3-4 screens, each batch audited against the surface map by `prototype-discovery` before the next starts. This is the custody rule (locked 2026-07-23): handing the corpus to an external, context-poor design environment structurally produces coverage loss the pipeline later pays to reconcile.
+
+An **external designer or dedicated design tool is an optional mode**, chosen deliberately — and then the commission must carry the batch-gated contract explicitly: screens return in audited batches of 3-4, never as one full-surface drop, with the surface map attached as the coverage checklist.
 
 ## Core Rule
 
@@ -23,7 +29,7 @@ Open every brief with a short "How To Read This Brief" section declaring three k
 
 ## The Discovery Protocol (the prototype is a discovery instrument)
 
-Prototyping is how the product gets SEEN for the first time; the designer WILL discover screens, states, and connective flows nobody listed — that is the prototype's purpose, not a violation. The brief must say so: the scope list is **the floor, not a cage**. Instruct the designer to design what the product clearly needs and mark additions **DISCOVERED**; `prototype-discovery` reconciles them afterward. Only additions that would change what the product IS come back as questions first. Never write "do not invent pages" as a blanket ban.
+Prototyping is how the product gets SEEN for the first time; the designer WILL discover screens, states, and connective flows nobody listed — that is the prototype's purpose, not a violation. The brief must say so: the scope list is **the floor, not a cage**. Instruct the designer to design what the product clearly needs and mark additions **DISCOVERED**; the per-batch coverage audit (`prototype-discovery`) reconciles them as each batch lands. Only additions that would change what the product IS come back as questions first. Never write "do not invent pages" as a blanket ban.
 
 ## Weave From The Artifacts (a brief is a culmination, not a riff)
 
@@ -67,7 +73,7 @@ This brief is for high-fidelity design exploration and clickable/static prototyp
 
 Do not ask the designer to implement production database, auth, wallet, payment, API, or smart-contract integration unless the user explicitly says the design prototype should include real integration.
 
-Mocked integrations in the design artifact are a design convenience only. They are not implementation decisions. When the prototype comes back, `prototype-discovery` and `prototype-reintegration` must identify every mocked data source, auth state, wallet action, payment path, API call, MCP/tool call, storage path, and proof/audit surface, then decide whether each becomes real in MVP, visibly simulated for demo only, deferred, out of scope, or blocked.
+Mocked integrations in the design artifact are a design convenience only. They are not implementation decisions. As batches land (or when an external-mode prototype returns), `prototype-discovery` and `prototype-reintegration` must identify every mocked data source, auth state, wallet action, payment path, API call, MCP/tool call, storage path, and proof/audit surface, then decide whether each becomes real in MVP, visibly simulated for demo only, deferred, out of scope, or blocked.
 
 If the project depends on real integrations, include enough domain and integration context for the designer to represent realistic product states. Do not hide integration boundaries just because the prototype itself will mock them.
 
@@ -123,7 +129,7 @@ Use this structure by default. When the designer has been interviewed and asked 
 ```markdown
 # Designer Brief: <project or feature>
 
-## Commission (one-liner: product + hi-fi mocked prototype; appetite/time-box if real)
+## Commission (one-liner: product + hi-fi mocked prototype; appetite/time-box if real; sequencing: direction lock first, coverage build in audited batches after acceptance)
 
 ## How To Read This Brief (LAWS / CONTEXT / DIRECTION + the discovery protocol: "the floor, not a cage"; mark additions DISCOVERED)
 

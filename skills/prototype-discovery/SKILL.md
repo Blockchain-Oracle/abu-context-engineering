@@ -1,134 +1,61 @@
 ---
 name: prototype-discovery
-description: Use when Abu provides a finished UI prototype, static HTML/CSS/JS export, screenshots, Figma-like output, or design artifact and wants Codex to explore it end to end before implementation. Extracts screens, flows, states, hidden requirements, auth/API/schema/data needs, and spec/story/plan deltas. Translates prototype findings into the target project stack such as React or Next.js instead of copying static HTML blindly.
+description: Use during an in-repo prototype coverage build to audit each batch of 3-4 screens against the product surface map — states, canonical data, copy laws — appending findings to the running design/coverage-audit.md. Also use in the optional external mode when a commissioned prototype (static HTML/CSS/JS export, Figma-like output, screenshots) returns from a designer and needs a whole-artifact audit. Extracts revealed requirements, hidden data/auth/API/schema needs, and spec/story/plan deltas; never silently rewrites source artifacts.
 ---
 
 # Prototype Discovery
 
-Use this skill after a designer/prototype agent has produced a high-fidelity mocked prototype.
+The per-batch audit protocol of the in-repo coverage build — and, in the optional external mode, the whole-artifact audit of a commissioned prototype.
 
 ## Core Rule
 
-The prototype is evidence, not the source of truth. Explore it deeply, extract what it reveals, then write a discovery report with proposed spec/story/quality/profile/plan deltas. Do not silently rewrite specs or start implementation unless the user explicitly asks.
+The prototype is evidence, not the source of truth. The product surface map is the contract. Audit against it, extract what each batch reveals, and write findings as proposed deltas. Do not silently rewrite specs or start implementation unless the user explicitly asks.
 
-If the prototype was produced after prior research/spec/story/design work, prototype discovery is not the last pre-plan step. It must feed a prototype reintegration pass that maps the mocked UI back to real integrations, constraints, and non-shipping blockers.
+## Why Per-Batch (the custody lesson)
 
-## Stack Translation Rule
+A full-surface prototype audited after the fact accumulates its gap silently — drops, thinned differentiators, and law violations are only measured once they are expensive to fix (x402arc postmortem, 2026-07-23: the 24-screen external drop was missing whole mapped screens). Auditing every 3-4 screens keeps verification continuous, the same way every text stage of the pipeline audits one artifact against its parent immediately. A batch does not pass until its audit is green; the next batch does not start until the current one passes.
 
-Prototype exports may be static HTML, CSS, JSX, screenshots, or generated design-system files. Treat those as design evidence. Before implementation, translate findings into the actual target stack from `project-quality-profile`.
+## Batch Audit Protocol (default mode, in-repo coverage build)
 
-Examples:
+Inputs per batch: the batch's screens as built, the surface map sections they implement, the designer brief's LAWS, and the accepted direction-lock tokens.
 
-- If the project is React/Next, infer routes, components, hooks, server actions/API routes, schemas, and state boundaries.
-- If the project is mobile, infer screens, navigation, native components, permissions, and platform states.
-- If the project is static HTML, then HTML/CSS may be directly relevant.
+Check, per screen:
 
-Do not tell the implementation agent to copy prototype HTML/CSS into a React codebase unless that is the chosen architecture.
+1. **States** — every map-required state rendered (empty, loading, error, success, and the product-specific ones); flag MISSING, CHANGED, and INVENTED (mark inventions DISCOVERED — they are the point, not a violation, unless they change what the product is).
+2. **Data** — on-screen data matches the map's canonical sample values verbatim; formats obey the map's number/address/unit rules.
+3. **Copy laws** — the brief's fixed vocabulary and honesty rules appear exactly; banned words absent.
+4. **Direction fidelity** — tokens from the accepted direction lock used; no per-screen aesthetic drift.
+5. **Access basics** — contrast, focus visibility, reduced-motion, touch targets per the quality bar.
+6. **Revealed needs** — new data objects, routes, auth/permission implications, API/schema candidates, background/realtime behavior the screens imply.
 
-## Mock Boundary Rule
-
-The high-fidelity prototype may use mocked data, mocked auth, mocked wallets, mocked API responses, mocked payments, or simulated backend behavior. These mocks are prototype evidence only.
-
-Do not treat prototype mocks as implementation defaults. Every mocked surface that appears required for the product must be handed to `prototype-reintegration` to decide one of:
-
-- real integration path for MVP,
-- real integration path after MVP with a visible non-shipping limitation,
-- explicit out-of-scope/non-goal,
-- blocker requiring more research or user decision.
-
-If Abu says the product should not ship mocks, call that out and require reintegration before implementation planning.
-
-## Inputs To Gather
-
-Prefer these inputs:
-
-- Prototype folder, static HTML files, screenshots, design export, or hosted preview.
-- Designer brief.
-- Product surface map when it exists (the checklist of expected screens, states, and data shapes).
-- Spec and stories.
-- Project quality profile.
-- Existing repo architecture if the project already exists.
-- Any raw notes or inspiration that led to the prototype.
-
-## What To Extract
-
-Inspect the prototype end to end and identify:
-
-- Screens, routes, modals, drawers, tabs, cards, and navigation paths.
-- User journeys and decision points.
-- Empty, loading, error, disabled, success, stopped/paused, and permission states.
-- Data objects shown in the UI.
-- Candidate database tables/collections and fields.
-- Candidate API endpoints/server actions/events.
-- Auth, wallet, account, session, permission, and role requirements.
-- External integrations and provider keys.
-- Settings and configuration surfaces.
-- Background jobs, scheduled work, streams, queues, or realtime updates.
-- Analytics, audit logs, history, receipts, and traceability needs.
-- Mismatches with the existing spec or stories.
-- Questions the prototype raises.
-
-## Process
-
-1. Inventory the prototype files/screens.
-2. If runnable, inspect the main screens visually; otherwise inspect source and screenshots.
-3. Build a screen map and user-flow map.
-4. Extract implied product requirements.
-5. Extract implied technical requirements.
-6. Translate implementation implications into the target project stack.
-7. Compare against spec, stories, designer brief, product surface map, and quality profile when available — for the surface map, check every listed screen, state, and data shape and flag anything the prototype dropped, changed, or invented.
-8. Identify every prototype mock or simulation that would need real integration before shipping.
-9. Write proposed deltas instead of editing source artifacts automatically.
-10. Recommend `prototype-reintegration` before planning whenever the prototype represents flows that depend on real APIs, wallets, payments, auth, storage, MCP servers, agents, or external infrastructure.
-
-## Output
-
-Use this structure:
+Append one entry per batch to `<project-root>/.thoughts/design/coverage-audit.md`:
 
 ```markdown
-# Prototype Discovery: <project or feature>
-
-## Prototype Inspected
-
-## Screen Map
-
-## User Flows
-
-## Revealed Product Requirements
-
-## Revealed Technical Requirements
-
-## Data Model Candidates
-
-## API And Event Candidates
-
-## Auth, Permissions, And Security Implications
-
-## State And Edge Cases
-
-## Target-stack Translation
-
-## Mocked Prototype Surfaces
-
-## Required Prototype Reintegration
-
-## Spec Deltas
-
-## Story Deltas
-
-## Plan Deltas
-
-## Quality Profile Deltas
-
-## Open Questions
-
-## Evidence
+## Batch N — <screens> (YYYY-MM-DD)
+Verdict: GREEN | RED (list blockers)
+States: <missing/changed/discovered>
+Data/canon: <deviations>
+Laws: <violations>
+Revealed: <requirements, data, API, auth implications>
+Proposed deltas: <spec/story/quality/plan — proposed, not applied>
 ```
 
-When creating a file, default to:
+The running log IS the consolidated discovery record; `prototype-reintegration` consumes it.
 
-```text
-<project-root>/.thoughts/prototype-discovery/YYYY-MM-DD-<topic>.md
-```
+## Mock Boundary Rule (both modes)
+
+Prototype screens may mock data, auth, wallets, API responses, payments, or backend behavior. Mocks are prototype evidence only — never implementation defaults. Every mocked surface that appears required for the product is handed to `prototype-reintegration` to classify: real integration for MVP, real after MVP with a visible non-shipping limitation, explicit out-of-scope, or blocker needing research or a user decision. If the user says the product must not ship mocks, reintegration is mandatory before planning.
+
+## Stack Translation Rule (both modes)
+
+Prototype output is design evidence in whatever form it took (HTML/CSS, JSX, screenshots). Before implementation, translate findings into the target stack from `project-quality-profile` — routes, components, hooks, server actions, schemas, state boundaries for React/Next; screens, navigation, permissions for mobile. Do not instruct anyone to copy prototype markup into the codebase unless that is the chosen architecture.
+
+## External Mode (optional — commissioned prototypes only)
+
+When a human designer or dedicated design tool was deliberately commissioned (batch-gated contract per the designer brief), audit each returned batch with the protocol above. If a legacy full-surface drop arrives anyway, run one whole-artifact audit: inventory every file/screen, build the screen and flow map, then apply the batch checklist across the entire surface, comparing against spec, stories, brief, and surface map — flag everything dropped, changed, or invented. Write the report to `<project-root>/.thoughts/prototype-discovery/YYYY-MM-DD-<topic>.md` with sections: Prototype Inspected · Screen Map · User Flows · Revealed Product Requirements · Revealed Technical Requirements · Data Model Candidates · API And Event Candidates · Auth, Permissions, And Security Implications · State And Edge Cases · Target-stack Translation · Mocked Prototype Surfaces · Required Prototype Reintegration · Spec/Story/Plan/Quality Deltas · Open Questions · Evidence.
+
+## Exit
+
+Discovery is complete when every mapped screen has a green batch entry (or the external report is accepted), every mock is listed for reintegration, and proposed deltas are queued for the user's review. Recommend `prototype-reintegration` before planning whenever screens depend on real APIs, wallets, payments, auth, storage, MCP servers, agents, or external infrastructure.
 
 If artifact boundaries are unclear, read `../../references/operating-model.md` from the plugin root.

@@ -15,9 +15,9 @@ idea
 -> spec
 -> stories
 -> product surface map
--> designer brief
--> high-fidelity mocked prototype
--> prototype discovery
+-> designer brief (direction-lock commission)
+-> in-repo prototype: direction lock
+-> in-repo prototype: coverage build (batch-audited)
 -> prototype reintegration
 -> spec/story/quality deltas accepted
 -> goal prompt refreshed when useful
@@ -54,9 +54,11 @@ Stories describe user-facing slices or BDD-style acceptance paths derived from a
 
 Product surface maps make the concrete product surface explicit before a designer brief: full screen inventory, navigation flow, per-screen required states (loading, empty, error, success, and product-specific states), on-screen data shapes, and generated artifacts. They exist because briefs written from stories alone delegate dozens of micro-decisions to the designer's imagination. They stay on the product surface — no database schema, API design, or code architecture.
 
-Designer briefs package project context for a design/prototype agent. They should explain the product, users, flows, screens, states, domain details, inspirations, and prototype scope. When a product surface map exists, the brief consumes it as the source of truth for screens, states, and data shapes instead of re-deriving them; prototype discovery later audits the returned prototype against that same map. They should ask for a high-fidelity mocked prototype: production-quality UX and visuals with mocked data and mocked integrations. They should not prescribe colors, fonts, or exact visual style unless brand rules or user instructions require it.
+In-repo prototypes obey the context-custody rule (locked with Abu 2026-07-23, from the x402arc gap postmortem). The prototype is built inside the project repo by the agent that holds the full corpus — never, by default, in an external design environment. Every handoff to a context-poor environment compresses the corpus into a projection, and the loss surfaces as dropped screens, thinned differentiators, and taste misses that the pipeline then pays to reconcile after the fact. The gap is structural, not bad luck: the external round-trip is the only stage that surrenders context custody, moves verification from continuous to post-hoc, and forces one artifact to serve two fighting mandates (coverage fidelity vs taste discovery). The prototype therefore splits into two sub-steps: first the **direction lock** — a few fully-alive screens auditioning a visual language on the product's demo-critical spine, iterated with the user in fast rounds until a direction is accepted; then the **coverage build** — the full mapped surface built in batches of 3-4 screens, each batch audited against the product surface map before the next batch starts. Batch audits append to one running `design/coverage-audit.md`, so the consolidated "what the prototype taught us" record still exists.
 
-Prototype discovery audits the designer's output after it exists. It extracts newly revealed requirements, hidden data needs, routes, auth rules, API contracts, schema candidates, states, and implementation implications. It writes a discovery report first; specs, stories, and plans should be updated after review instead of letting the prototype silently replace the source of truth.
+Designer briefs package project context for whoever builds the direction lock — by default the context-holding agent itself, or, in the optional external mode, a human designer or dedicated design tool commissioned under a batch-gated contract (screens return in audited batches of 3-4, never as one full-surface drop). The brief explains the product, users, flows, screens, states, domain details, inspirations, and prototype scope. When a product surface map exists, the brief consumes it as the source of truth for screens, states, and data shapes instead of re-deriving them. It should ask for high-fidelity mocked screens: production-quality UX and visuals with mocked data and mocked integrations. It should not prescribe colors, fonts, or exact visual style unless brand rules or user instructions require it.
+
+Prototype discovery is the per-batch audit protocol of the coverage build (and the whole-artifact audit when the optional external mode is used). Per batch it checks every mapped state and data shape, flags drops, changes, and DISCOVERED additions, and extracts newly revealed requirements, hidden data needs, routes, auth rules, API contracts, schema candidates, and implementation implications. Findings append to the running coverage-audit log as proposed deltas; specs, stories, and plans are updated after review instead of letting the prototype silently replace the source of truth.
 
 Prototype reintegration maps the designer's mocked prototype back onto current research, real tools, real APIs, real auth/payment/wallet/storage paths, and known technical constraints. Prototype mocks are allowed only in the design artifact. Before planning implementation, every mocked prototype surface must be classified as real integration, non-shipping blocker, or explicitly out of MVP scope. Do not let "mocked in the prototype" become "mocked in the product" by default.
 
@@ -89,7 +91,7 @@ Use this layout unless the user or project gives a better one:
   handoffs/
 ```
 
-Raw sources are immutable. Wiki files are maintained by the agent. Specs, stories, design briefs, prototype discovery reports, plans, verification, and handoffs are project artifacts.
+Raw sources are immutable. Wiki files are maintained by the agent. Specs, stories, design briefs, coverage-audit logs, plans, verification, and handoffs are project artifacts. The in-repo prototype and its running `coverage-audit.md` live under `design/`; the `prototype-discovery/` directory is used only by the optional external mode (whole-artifact audits of commissioned prototypes) and by legacy projects.
 
 ## First Plugin Scope
 
@@ -142,9 +144,10 @@ Use explicit checkpoints:
 4. Stories accepted.
 5. Product surface map accepted when UI/prototype work is in scope.
 6. Designer brief accepted when UI/prototype work is in scope.
-7. Prototype discovery accepted when a prototype exists.
-8. Prototype reintegration accepted when a prototype exists.
-9. Spec/story/quality deltas accepted when prototype discovery or reintegration finds gaps.
-10. Plan accepted.
-11. Implementation verified.
-12. Handoff written.
+7. Direction lock accepted (visual language chosen from in-repo exploration).
+8. Coverage build complete — every batch audit green against the surface map.
+9. Prototype reintegration accepted when a prototype exists.
+10. Spec/story/quality deltas accepted when batch audits or reintegration find gaps.
+11. Plan accepted.
+12. Implementation verified.
+13. Handoff written.
