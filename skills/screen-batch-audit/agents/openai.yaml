@@ -2,6 +2,6 @@ interface:
   display_name: "Prototype Discovery"
   short_description: "Extract requirements from prototypes."
   brand_color: "#0F766E"
-  default_prompt: "Use $prototype-discovery to audit this prototype before implementation."
+  default_prompt: "Use $screen-batch-audit to audit the latest batch of built screens against the surface map and design document."
 policy:
   allow_implicit_invocation: true
