@@ -75,8 +75,6 @@ Use this layout unless the user or project gives a better one:
   specs/
   stories/
   design/
-  prototype-discovery/
-  prototype-reintegration/
   goals/
   plans/
   verification/

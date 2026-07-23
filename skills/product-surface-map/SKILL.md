@@ -1,19 +1,19 @@
 ---
 name: product-surface-map
-description: Use after stories and before designer-brief when Abu wants the concrete product surface written down — full screen inventory, navigation flow, per-screen required states (loading, empty, error, success, and product-specific states), on-screen data shapes, and entry points. Use whenever a designer brief would otherwise be written from spec/stories alone, when Abu says the project "feels shallow" for design handoff, or when a designer/prototype agent would be left to guess screens, states, or data. Prevents shallow briefs that delegate micro-decisions to the designer's imagination.
+description: Use after stories and before design-document when Abu wants the concrete product surface written down — full screen inventory, navigation flow, per-screen required states (loading, empty, error, success, and product-specific states), on-screen data shapes, and entry points. Use whenever design direction would otherwise be written from spec/stories alone, when Abu says the project "feels shallow" for design work, or when a builder would be left to guess screens, states, or data. Prevents shallow design docs that delegate micro-decisions to imagination; its inventory is the checklist screen-batch-audit enforces during the build.
 ---
 
 # Product Surface Map
 
-Use this skill after stories exist and before writing a designer brief. It converts spec + stories into the concrete surface a designer must execute rather than guess.
+Use this skill after stories exist and before writing the design document. It converts spec + stories into the concrete surface the build must execute rather than guess.
 
 ## Core Rule
 
-Make the implicit explicit. Every screen, state, and on-screen data shape a designer would otherwise invent must be written down here first. Stay on the product surface: no database schema, no API design, no code routes, no component architecture — those belong to prototype-discovery, reintegration, and planning.
+Make the implicit explicit. Every screen, state, and on-screen data shape a builder would otherwise invent must be written down here first. Stay on the product surface: no database schema, no API design, no code routes, no component architecture — those belong to planning and the implementation loop.
 
 ## Why This Exists
 
-A designer brief written from stories alone delegates dozens of micro-decisions (which screens exist, what an error looks like, what fields a document carries) to the designer's taste. Each guess is a coin-flip against what the user actually wants. The surface map converts "designer guesses" into "designer executes", and gives prototype-discovery a checklist to audit the returned prototype against.
+Design direction written from stories alone delegates dozens of micro-decisions (which screens exist, what an error looks like, what fields a document carries) to taste. Each guess is a coin-flip against what the user actually wants. The surface map converts "the builder guesses" into "the builder executes", and gives screen-batch-audit the checklist it audits built screens against.
 
 ## Required Inputs
 
@@ -37,7 +37,7 @@ If stories are missing, recommend `story-writer` first.
 6. Note copy tone and vocabulary rules (jargon bans, domain terms to use or avoid).
 7. Mark open surface questions that are genuinely the designer's to answer (layout, visual treatment) versus decisions already made.
 8. Keep each item traceable to a story or requirement ID where possible.
-9. Stop before visual direction, wireframes, or implementation — the surface map feeds the designer brief; it does not replace it.
+9. Stop before visual direction, wireframes, or implementation — the surface map feeds the design document; it does not replace it.
 
 ## Output
 
