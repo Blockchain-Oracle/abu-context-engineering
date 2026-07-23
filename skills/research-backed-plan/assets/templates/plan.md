@@ -6,7 +6,7 @@
 
 ## Open Questions
 
-## Prototype Reintegration Gate
+## Integration Reality Matrix
 
 ## Phase 1: <name>
 
