@@ -1,6 +1,6 @@
 ---
 name: designer-brief
-description: Use when Abu wants a designer-brief.md for an AI designer or prototype agent after research, specs, stories, inspiration, or project context have been gathered. Produces a rich product and flow brief for high-fidelity mocked UI prototypes, avoids AI-slop design patterns, and keeps backend/database/wallet/auth/API behavior mocked only inside the design prototype unless explicitly in scope.
+description: Use whenever Abu wants a designer brief, design handoff, prototype commission, or "brief for Claude design" — any moment a design/prototype phase starts after research, spec, stories, or a product surface map exist. Also use when Abu criticizes an existing brief as shallow, rigid, demo-framed, or taste-dictating. Produces a product-first designer-brief.md woven from ALL project artifacts with visible source threads, structured in three registers (LAWS = product identity, CONTEXT = deep understanding, DIRECTION = overrulable suggestions), with a discovery protocol ("the floor, not a cage" — designers mark unlisted screens DISCOVERED), zero visual-taste dictation, zero demo framing, and mocked-only integrations inside the prototype unless explicitly in scope.
 ---
 
 # Designer Brief
@@ -9,25 +9,55 @@ Use this skill when preparing an external AI designer or prototype agent to desi
 
 ## Core Rule
 
-Give the designer enough product, domain, flow, and state context to make strong design decisions. Do not over-direct visual taste. Avoid prescribing colors, fonts, gradients, or exact aesthetics unless the user provided brand rules or explicitly asked for them.
+Give the designer deep product, domain, flow, and state understanding — and open hands. The brief transmits WHAT things are and WHO they serve so thoroughly the designer could argue about the product; it never dictates HOW things should look. The product story leads, always. No demo framing, stage beats, or audience language anywhere — designers design for users (product-not-demo doctrine, locked 2026-07-23); build/polish priority appears only as plain sequencing inside the screen direction when deadlines demand it.
+
+Do not prescribe colors, fonts, dark/light mode, motifs, gradients, or aesthetics — even when a visual direction was discussed earlier in the project — unless the user explicitly says to put brand rules in the brief. The writer of a brief is not the designer (locked 2026-07-23).
+
+## The Three Registers (structure every brief's content this way)
+
+Open every brief with a short "How To Read This Brief" section declaring three kinds of content, then keep them distinguishable throughout:
+
+- **LAWS** — the product's identity; non-negotiable. Fixed vocabulary, honesty/trust rules, jargon bans, real-data-only. These are what make the product itself.
+- **CONTEXT** — the understanding: what each surface is, who uses it, why it exists, what research verified. The deep material.
+- **DIRECTION** — the team's current picture: suggested emphasis, component ideas, foreseen traps. Explicitly overrulable: "when your idea beats ours, yours wins."
+
+## The Discovery Protocol (the prototype is a discovery instrument)
+
+Prototyping is how the product gets SEEN for the first time; the designer WILL discover screens, states, and connective flows nobody listed — that is the prototype's purpose, not a violation. The brief must say so: the scope list is **the floor, not a cage**. Instruct the designer to design what the product clearly needs and mark additions **DISCOVERED**; `prototype-discovery` reconciles them afterward. Only additions that would change what the product IS come back as questions first. Never write "do not invent pages" as a blanket ban.
+
+## Weave From The Artifacts (a brief is a culmination, not a riff)
+
+The brief is written FROM the project's accumulated artifacts — research, spec, stories, surface map, requirements, wiki — and must show its threads: each section carries a short `Sources:` line naming what feeds it. If a section cannot cite a source, either the artifact stack has a gap (fix upstream) or the section is invention (cut it).
+
+- **Personas are derived and counted, never invented color.** "Today's alternative is emailing the vendor and waiting" (observed) beats "allergic to contact-us forms" (quip). Per the 18F register: counted specifics, honest attribution, never overstate.
+- **For agent-facing/API products, AI agents are first-class users** — a program that discovers/inspects/pays without seeing the UI, plus its human owner who audits the trail. One surface, two readers; every capability gets a human job name AND a machine path.
+- **Every core surface gets proportionate, equal-depth direction** — the surface that took the longest to decide must not get the shortest paragraph.
+
+## Prose Discipline (from published-brief canon: Shape Up, 18F, AI-design specs)
+
+- Lead sections with observed evidence, not asserted desire; problems open with what was SEEN, with numbers and dates.
+- State product LAWS as absolutes with a reason; never aspirations ("modern, clean, intuitive" are banned words).
+- Organize each surface by user JOBS, not furniture (no "a header, a sidebar, a table").
+- Per-surface cadence: one confident default sentence → the constraints that are truly law or map-contract → the TRAP (the rabbit hole a designer could sink a day into).
+- Include Rabbit Holes and No-gos sections — real briefs say what NOT to build; AI-generated ones never volunteer subtraction.
+- Peer register: senior colleague briefing a builder. No hedging adverbs, no throat-clearing.
 
 ## Relationship To Product Surface Map
 
-When a product surface map exists, it is the source of truth for the screen inventory, per-screen states, and on-screen data shapes. The brief must consume it — embed or attach its content and add narrative direction on top — instead of re-deriving screens and states from spec/stories. The brief's own job is everything the surface map deliberately lacks: product story, users, domain teaching, journey narrative, inspiration, quality bar, mock boundaries, and creative freedom.
+When a product surface map exists, it is the source of truth for the screen inventory, per-screen states, and on-screen data shapes. The brief must consume it — embed or attach its content and add narrative direction on top — instead of re-deriving screens and states from spec/stories. Sample data from the map is used verbatim (it is audited canon); the designer may extend it in its spirit, never contradict it. The brief's own job is everything the surface map deliberately lacks: product story, users, domain teaching, journey narrative, inspiration, quality bar, mock boundaries, and creative freedom.
 
 Only derive screens and states inline when no surface map exists, and say so — then recommend `product-surface-map` first for anything beyond a trivial surface.
 
 ## Interview The Designer First (when the designer is known)
 
-When a specific designer/design agent will receive the brief, interview them BEFORE writing it — their answers shape the brief's structure and become the handback contract. Ask, from their point of view:
+When a specific designer/design agent will receive the brief, interview them BEFORE writing it — their answers shape the brief's structure. Ask, from their point of view:
 
 1. What input package do they need, in what format, and what do builders always forget to include?
 2. Wireframes vs direction vs straight-to-hi-fi — their sequence, and where they want sign-off checkpoints.
 3. Mobile vs desktop priority for this product's real audience.
 4. Do they create the brand identity or receive it (plus the user's veto constraints).
-5. The handback format they can realistically commit to (file structure, styling approach, how states are delivered, fonts/assets) — this becomes the contract both sides build against.
-6. Their tools, and whether the toolchain changes what inputs they need.
-7. The #1 thing builders do that ruins a handoff for them — then don't do it.
+5. Their tools, and whether the toolchain changes what inputs they need.
+6. The #1 thing builders do that ruins a handoff for them — then don't do it.
 
 Give them just enough product context to answer meaningfully; the full brief comes after. Fold durable lessons from their answers back into this skill; fold project-specific terms into the brief only.
 
@@ -56,7 +86,7 @@ Call out these risks:
 - Icons, charts, or animations that do not explain user intent.
 - Missing empty, loading, error, disabled, and success states.
 
-Phrase this as a quality bar, not a visual recipe. Do not ban or require specific colors, fonts, or aesthetics unless the project has brand constraints.
+Phrase this as a quality bar, not a visual recipe. Include at least one NAMED anti-reference (a real product/style the design must not resemble), labeled as qualities to avoid, not styles to copy in reverse.
 
 ## Inputs To Gather
 
@@ -66,50 +96,24 @@ Prefer these inputs:
 - Domain wiki pages.
 - Spec.
 - Stories and acceptance criteria.
-- Product surface map when available (screen inventory, per-screen states, data shapes) — prefer it as the backbone of the screen-by-screen direction.
+- Product surface map when available (screen inventory, per-screen states, data shapes) — the backbone of the screen-by-screen direction.
 - Product/user flow notes.
 - Raw user notes and inspiration links.
 - GitHub links, README files, screenshots, demos, or docs the designer should inspect.
 - Known constraints and non-goals.
 - Prototype target: landing page, dashboard, app flow, mobile, desktop, or responsive prototype.
-- The designer's own stated working preferences and handback format when they have been interviewed — the brief should confirm that contract back to them verbatim so both sides build against the same terms.
-
-## What To Include
-
-Include:
-
-- Product summary and why it exists — and when the project is demo-judged, LEAD with the demo script: what the audience must feel at each beat. The demo script drives design decisions more than the screen list does.
-- Target users and their intent.
-- Domain concepts the designer must understand.
-- End-to-end journey and step-by-step flow.
-- Screen inventory in recommended order (from the product surface map when it exists).
-- Required content, data, empty states, loading states, and error states (from the product surface map when it exists; never silently drop a state it lists).
-- Interaction ideas the designer may use, such as modals, drawers, tabs, carousels, timelines, animations, command menus, search, filters, or onboarding.
-- Mock data expectations.
-- Integration boundaries the prototype should represent, even when mocked.
-- Inspiration sources and what each source is meant to communicate — plus at least one ANTI-reference: a named product/style the design must NOT resemble.
-- Anti-slop quality bar and product-specific design risks.
-- Explicit creative freedom for visual direction.
-- Things not to design or implement.
-
-Do not include:
-
-- Fixed colors, fonts, spacing systems, or exact component styling unless brand constraints require them.
-- Backend implementation instructions.
-- Database schema requirements.
-- Production integration instructions.
-- Code architecture.
+- The designer's own stated working preferences when they have been interviewed.
 
 ## Process
 
-1. Read the available research, spec, stories, wiki, README, inspiration notes, and the product surface map when it exists.
+1. Read ALL available artifacts — research, spec, stories, wiki, surface map, requirements — and build the section→source weave before writing anything.
 2. Identify what the designer needs to understand before choosing screens or layout.
-3. Convert user and product context into a concise but rich brief.
-4. Give a recommended screen-by-screen journey — sourced from the product surface map when it exists, derived inline only when it does not.
+3. Write in the three registers, with per-section Sources lines and the discovery protocol stated.
+4. Give per-surface direction at equal depth — default sentence, laws/contract constraints, the trap.
 5. State high-fidelity mocked prototype assumptions clearly.
 6. Call out which mocked surfaces must be revisited during prototype discovery and reintegration.
-7. Add anti-slop quality constraints based on the product, not generic style bans.
-8. Preserve creative freedom for visual treatment.
+7. Add anti-slop constraints based on the product, not generic style bans.
+8. Preserve full creative freedom for visual treatment — no taste dictation.
 9. List source links/files the designer should inspect.
 
 ## Output
@@ -119,36 +123,46 @@ Use this structure by default. When the designer has been interviewed and asked 
 ```markdown
 # Designer Brief: <project or feature>
 
-## Purpose
+## Commission (one-liner: product + hi-fi mocked prototype; appetite/time-box if real)
 
-## Prototype Scope
+## How To Read This Brief (LAWS / CONTEXT / DIRECTION + the discovery protocol: "the floor, not a cage"; mark additions DISCOVERED)
 
-## Product Context
+## The Problem (observed evidence with numbers and attribution — never a wished solution)
 
-## Target Users
+## The Product (what it is, in its own vocabulary — every core surface named and explained)
 
-## Domain Knowledge The Designer Needs
+## Objectives & Success Criteria (goals = purpose; objectives = measurable)
 
-## Core User Journey
+## Target Users (derived + counted from artifacts; agents as first-class users where the product serves them)
 
-## Screen-by-screen Direction
+## Domain Knowledge The Designer Needs (only what design decisions depend on)
 
-## Data, States, And Mocking Rules
+## The Jobs / Core User Journeys (per user, traceable to stories)
 
-## Prototype Quality Bar
+## Surface Direction (one block PER core surface, equal depth: default sentence → law/contract constraints → the trap)
 
-## Anti-slop Risks To Avoid
+## Scope & Deliverables (in-scope floor + explicit out-of-scope; discovery protocol restated)
 
-## Interaction Opportunities
+## Rabbit Holes (where a designer could sink a day and shouldn't)
 
-## Inspiration And Source Material
+## No-gos (what must never appear)
 
-## Creative Freedom
+## Data, States, And Mocking Rules (surface-map canon verbatim; extend in spirit)
 
-## Explicit Non-goals
+## Prototype Quality Bar (include accessibility as part of premium)
+
+## Anti-slop Risks To Avoid (with named anti-references)
+
+## Interaction Opportunities (optional palette, none mandatory)
+
+## Inspiration And Source Material (qualities, not looks)
+
+## Creative Freedom (full visual freedom stated outright)
 
 ## Open Questions
 ```
+
+Every section carries a `Sources:` line citing the artifacts that feed it.
 
 When creating a file, default to:
 

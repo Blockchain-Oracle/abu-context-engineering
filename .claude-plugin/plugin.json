@@ -1,7 +1,7 @@
 {
   "name": "abu-context-engineering",
   "displayName": "Abu Context Engineering",
-  "version": "0.5.3",
+  "version": "0.6.0",
   "description": "Research-first context engineering workflows for Claude Code and Codex, including prototype reintegration and goal prompts before implementation planning.",
   "author": {
     "name": "Abu"
